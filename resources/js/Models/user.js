@@ -34,6 +34,25 @@ class User {
     isLoggedIn() {
         return Boolean(this.loggedIn) === true
     }
+
+    /**
+     * Remove all user's data from local storage
+     */
+    destroy() {
+        localStorage.removeItem('userName')
+        localStorage.removeItem('userEmail')
+        localStorage.removeItem('userLoggedIn')
+    }
+
+    /**
+     *
+     * @param callback function
+     */
+    logout(callback) {
+        this.destroy()
+
+        callback()
+    }
 }
 
 export default new User()

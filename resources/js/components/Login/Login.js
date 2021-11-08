@@ -22,7 +22,7 @@ function Login({history, location}) {
         }
 
         const authenticatedCallback = () => {
-            let {from} = location.state || {from: {pathname: '/'}}
+            let {from} = location.state || {from: {pathname: '/app/dashboard'}}
             history.replace(from)
         }
 
