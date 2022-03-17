@@ -6,7 +6,7 @@ This is a base Laravel project with ReactJS frontend and Laravel Sanctum API aut
 
 ## Installation
 
-After you boot up this project according the [official documentation](https://laravel.com/docs/8.x) you should install the dependencies:
+After you boot up this project according the [official documentation](https://laravel.com/docs/) you should install the dependencies:
 
 `composer install`
 
@@ -15,6 +15,23 @@ After you boot up this project according the [official documentation](https://la
 And build the project:
 
 `npm run dev`
+
+## Docker - Sail up!
+You could run this project usin Docker - Sail. Here is the [official sail documentation](https://laravel.com/docs/9.x/sail) for more info.
+
+
+Run the following command to install dependencies:
+```
+docker run --rm \
+-u "$(id -u):$(id -g)" \
+-v $(pwd):/opt \
+-w /opt \
+laravelsail/php80-composer:latest \
+composer install --ignore-platform-reqs
+```
+
+After succesful installation you could run:
+`./vendor/bin/sail up`
 
 ## License
 
