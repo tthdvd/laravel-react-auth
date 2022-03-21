@@ -23,7 +23,7 @@ function Login({history, location}) {
 
         const authenticatedCallback = () => {
             let {from} = location.state || {from: {pathname: '/app/dashboard'}}
-            history.replace(from)
+            history.push(from)
         }
 
         window.axios.post('/api/login', loginCredentials).then((response) => {
