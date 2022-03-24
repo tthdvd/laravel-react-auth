@@ -5,6 +5,7 @@ class User {
     }
 
     init() {
+        this.id = Number(localStorage.getItem('userId'))
         this.name = localStorage.getItem('userName')
         this.email = localStorage.getItem('userEmail')
         this.loggedIn = localStorage.getItem('userLoggedIn')
@@ -18,6 +19,7 @@ class User {
      * @param callback function
      */
     authenticated(data, callback) {
+        localStorage.setItem('userId', data.id)
         localStorage.setItem('userName', data.name)
         localStorage.setItem('userEmail', data.email)
         localStorage.setItem('userLoggedIn', true)
@@ -39,6 +41,7 @@ class User {
      * Remove all user's data from local storage
      */
     destroy() {
+        localStorage.removeItem('userId')
         localStorage.removeItem('userName')
         localStorage.removeItem('userEmail')
         localStorage.removeItem('userLoggedIn')
