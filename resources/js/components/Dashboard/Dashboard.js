@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import user from "../../Models/user";
-import {Grid, Typography} from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import MainLayout from "../MainLayout/MainLayout";
 
 function Dashboard() {
@@ -16,5 +16,4 @@ function Dashboard() {
         </MainLayout>
     )
 }
-
 export default Dashboard

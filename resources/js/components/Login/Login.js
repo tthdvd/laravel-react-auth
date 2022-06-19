@@ -8,9 +8,9 @@ import {
     Typography
 } from "@mui/material";
 import user from "../../Models/user";
-import {withRouter} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function Login({history, location}) {
+function Login({ history, location }) {
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -22,7 +22,7 @@ function Login({history, location}) {
         }
 
         const authenticatedCallback = () => {
-            let {from} = location.state || {from: {pathname: '/app/dashboard'}}
+            let { from } = location.state || { from: { pathname: '/app/dashboard' } }
             history.push(from)
         }
 
@@ -33,7 +33,7 @@ function Login({history, location}) {
 
     return (
         <Container maxWidth={"xs"}>
-            <CssBaseline/>
+            <CssBaseline />
             <Box
                 sx={{
                     marginTop: 8,
@@ -69,7 +69,7 @@ function Login({history, location}) {
                         fullWidth
                         variant={"outlined"}
                         type={"submit"}
-                        sx={{mt: 3, mb: 2}}
+                        sx={{ mt: 3, mb: 2 }}
                     >
                         Login
                     </Button>
@@ -79,4 +79,4 @@ function Login({history, location}) {
     )
 }
 
-export default withRouter(Login)
+export default useNavigate(Login)
