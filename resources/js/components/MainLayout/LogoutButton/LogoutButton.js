@@ -1,9 +1,10 @@
 import React from "react";
-import {Button, Box} from "@mui/material";
+import { Button, Box } from "@mui/material";
 import user from "../../../Models/user";
-import {withRouter} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-function LogoutButton({history}) {
+function LogoutButton({ history }) {
 
     const logout = (e) => {
         e.preventDefault()
@@ -39,4 +40,4 @@ function LogoutButton({history}) {
     )
 }
 
-export default withRouter(LogoutButton)
+export default useNavigate(LogoutButton)
