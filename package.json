@@ -28,6 +28,7 @@
         "@emotion/react": "^11.5.0",
         "@emotion/styled": "^11.3.0",
         "@mui/material": "^5.0.4",
+        "idb": "^7.0.1",
         "react-router-dom": "^5.3.0"
     }
 }

@@ -13,3 +13,5 @@ require('./bootstrap');
  */
 
 require('./components/App');
+
+require('./db')
