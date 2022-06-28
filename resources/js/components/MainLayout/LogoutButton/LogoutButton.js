@@ -2,19 +2,26 @@ import React from "react";
 import { Button, Box } from "@mui/material";
 import user from "../../../Models/user";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+// import { useState } from "react";
 
-function LogoutButton({ history }) {
-
+const LogoutButton = () => {
+    let navigate = useNavigate();
+    // }
+    // function LogoutButton({ history }) {
     const logout = (e) => {
         e.preventDefault()
 
         window.axios.post('/api/logout')
-            .then(() => {
+            .then((res) => {
                 //successful response
+                window.location.reload(); // this is not good, look for better to clear localStorage.
+                console.log(res.data);
+                console.log({ res });
+                navigate('/app/login');
             })
-            .catch(() => {
+            .catch((error) => {
                 //handle if something went wrong
+                console.log({ error });
             })
             .then(() => {
                 //this code will be definitely executed
@@ -23,11 +30,11 @@ function LogoutButton({ history }) {
     }
 
     const afterUserDestroyed = () => {
-        history.push('/app/login')
+        navigate('/app/login')
     }
 
     return (
-        <React.Fragment>
+        <>
             <Box component={"form"} onSubmit={logout}>
                 <Button
                     type={"submit"}
@@ -36,8 +43,8 @@ function LogoutButton({ history }) {
                     Logout
                 </Button>
             </Box>
-        </React.Fragment>
+        </>
     )
 }
 
-export default useNavigate(LogoutButton)
+export default LogoutButton;

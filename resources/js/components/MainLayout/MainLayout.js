@@ -10,20 +10,20 @@ import {
 } from "@mui/material";
 import LogoutButton from "./LogoutButton/LogoutButton";
 
-function MainLayout({children, title}) {
+function MainLayout({ children, title }) {
     return (
-        <React.Fragment>
-            <CssBaseline/>
+        <>
+            <CssBaseline />
             <AppBar position={"static"}>
                 <Toolbar>
                     <Typography
                         variant={"h6"}
                         component={"div"}
-                        sx={{flexGrow: 1}}
+                        sx={{ flexGrow: 1 }}
                     >
                         {title}
                     </Typography>
-                    <LogoutButton/>
+                    <LogoutButton />
                 </Toolbar>
             </AppBar>
 
@@ -46,7 +46,7 @@ function MainLayout({children, title}) {
                     </Paper>
                 </Box>
             </Container>
-        </React.Fragment>
+        </>
     )
 }
 

@@ -1,21 +1,16 @@
-import React from "react";
-import { Navigate, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import user from "../../Models/user";
 
-export const ProtectedRoute = ({ component: Component, ...rest }) => {
-    return (
-        <Route {...rest}
-            render={
-                (props) => {
-                    if (user.isLoggedIn()) {
-                        return <Component {...props} {...rest} />
-                    }
-                    return <Navigate to={{
-                        pathname: "/app/login",
-                        state: { from: props.location }
-                    }} />
-                }
-            }
-        />
-    )
+export const ProtectedRoute = () => {
+    let navigate = useNavigate()
+    const auth = user.isLoggedIn();
+    console.log('auth in Dashboard : ' + auth);
+    useEffect(() => {
+        if (!auth) {
+            navigate('/app/login');
+            // <Navigate to="/app/login" />
+        }
+    }, []);
+    return auth ? <Outlet /> : <Navigate to="/app/login" />;
 }

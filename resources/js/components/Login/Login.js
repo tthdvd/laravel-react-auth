@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     Box,
     Button,
@@ -10,7 +10,17 @@ import {
 import user from "../../Models/user";
 import { useNavigate } from "react-router-dom";
 
-function Login({ history, location }) {
+const Login = (location) => {
+    // function Login({ history, location }) {
+
+    let navigate = useNavigate();
+    const auth = user.isLoggedIn();
+    console.log('auth in login : ' + auth);
+    useEffect(() => {
+        if (auth) {
+            navigate('/app/dashboard');
+        }
+    }, []);
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -23,7 +33,7 @@ function Login({ history, location }) {
 
         const authenticatedCallback = () => {
             let { from } = location.state || { from: { pathname: '/app/dashboard' } }
-            history.push(from)
+            navigate(from)
         }
 
         window.axios.post('/api/login', loginCredentials).then((response) => {
@@ -79,4 +89,4 @@ function Login({ history, location }) {
     )
 }
 
-export default useNavigate(Login)
+export default Login;

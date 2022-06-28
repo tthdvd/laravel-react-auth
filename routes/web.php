@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('/app/dashboard');
+    // return redirect('/app/dashboard');
+    return view('app');
 });
 
 Route::get('/app/{path?}', function () {
